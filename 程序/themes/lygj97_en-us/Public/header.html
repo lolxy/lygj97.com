@@ -1,0 +1,30 @@
+{:hook('body_start')}
+<header>
+  <div class="containers ovh">
+    <div class="logo fl"> 
+    	<a href="{$site_host}"> 
+        	<img src="{:sp_get_image_url($site_logo,'!thumb400x150')}" alt="" class="img-responsive"/> 
+        </a> 
+    </div>
+    <div class="ewmbox fl"> 
+    	<img src="{:sp_get_image_url($site_erweima,'!thumbnail120x120')}" alt="" class="img-responsive"/> 
+    </div>
+    <div class="searchbox fr">
+      <div class="topnav hidden-xs"> 
+      <a href="javascript:void(0);" onclick="SetHome(this,'http://www.lygj97.com')"><span>Set Home</span></a> 
+      <a href="javascript:void(0);" onclick="AddFavorite('Lung He Ancient Architectural',location.href)"><span>Add Favorite</span></a> 
+      <a href="?l=zh-cn"><span>中文</span></a> 
+      <a href="{$gs_email}" class="last" target="_blank"><span>Enterprise E-mail</span></a> 
+      </div>
+      <div class="clear"></div>
+      <div class="search hidden-xs">
+        <form method="post" class="form-inline" action="{:U('portal/search/index')}" target="_blank" autocomplete="off">
+          <div class="inputbox">
+            <input type="text" class="input-control" name="keyword" placeholder="Please enter search keywords" value="{:I('get.keyword')}"/>
+          </div>
+          <input type="submit" class="btn-search" value="Search">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>

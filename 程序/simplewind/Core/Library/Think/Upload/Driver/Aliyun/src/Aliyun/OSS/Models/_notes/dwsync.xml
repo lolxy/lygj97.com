@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="CompleteMultipartUploadResult.php" server="hyu2652530001.my3w.com//htdocs/" local="131354937487185057" remote="131343563400000000" Dst="0" />
+<file name="MultipartUpload.php" server="hyu2652530001.my3w.com//htdocs/" local="131354937488265834" remote="131343563400000000" Dst="0" />
+<file name="OSSErrorCode.php" server="hyu2652530001.my3w.com//htdocs/" local="131354937489656810" remote="131343563400000000" Dst="0" />
+<file name="OSSOptions.php" server="hyu2652530001.my3w.com//htdocs/" local="131354937490707561" remote="131343563400000000" Dst="0" />
+<file name="PartListing.php" server="hyu2652530001.my3w.com//htdocs/" local="131354937492028502" remote="131343563400000000" Dst="0" />
+<file name="UploadPartResult.php" server="hyu2652530001.my3w.com//htdocs/" local="131354937493039339" remote="131343563400000000" Dst="0" />
+<file name="Bucket.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939354595259" remote="131343563400000000" Dst="0" />
+<file name="AccessControlPolicy.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939354675310" remote="131343563400000000" Dst="0" />
+<file name="CopyObjectResult.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939355786091" remote="131343563400000000" Dst="0" />
+<file name="InitiateMultipartUploadResult.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939355806111" remote="131343563400000000" Dst="0" />
+<file name="MultipartUploadsListing.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939356917309" remote="131343563400000000" Dst="0" />
+<file name="OSSError.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939357017529" remote="131343563400000000" Dst="0" />
+<file name="OSSObjectSummary.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939358278275" remote="131343563400000000" Dst="0" />
+<file name="OSSObject.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939358498587" remote="131343563400000000" Dst="0" />
+<file name="ObjectListing.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939359979597" remote="131343563400000000" Dst="0" />
+<file name="Owner.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939360339738" remote="131343563400000000" Dst="0" />
+<file name="PutObjectResult.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939363311874" remote="131343563400000000" Dst="0" />
+<file name="PartSummary.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939363321855" remote="131343563400000000" Dst="0" />
+</dwsync>

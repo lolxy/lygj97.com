@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="SXCopyObjectParser.php" server="hyu2652530001.my3w.com//htdocs/" local="131354937494200048" remote="131343563400000000" Dst="0" />
+<file name="SXGetBucketAclParser.php" server="hyu2652530001.my3w.com//htdocs/" local="131354937495250951" remote="131343563400000000" Dst="0" />
+<file name="SXListBucketsParser.php" server="hyu2652530001.my3w.com//htdocs/" local="131354937496281513" remote="131343563400000000" Dst="0" />
+<file name="SXListObjectsParser.php" server="hyu2652530001.my3w.com//htdocs/" local="131354937497402315" remote="131343563400000000" Dst="0" />
+<file name="SXParser.php" server="hyu2652530001.my3w.com//htdocs/" local="131354937498463068" remote="131343563400000000" Dst="0" />
+<file name="SXCompleteMultipartUploadParser.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939365823628" remote="131343563400000000" Dst="0" />
+<file name="SXCreateBucketParser.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939367935125" remote="131343563400000000" Dst="0" />
+<file name="SXEmptyParser.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939368135270" remote="131343563400000000" Dst="0" />
+<file name="SXInitiateMultipartUploadParser.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939370126682" remote="131343563400000000" Dst="0" />
+<file name="SXGetObjectParser.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939370136691" remote="131343563400000000" Dst="0" />
+<file name="SXListMultipartUploadsParser.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939374109513" remote="131343563400000000" Dst="0" />
+<file name="SXListPartsParser.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939374169555" remote="131343563400000000" Dst="0" />
+<file name="SXOSSErrorParser.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939377411978" remote="131343563400000000" Dst="0" />
+<file name="SXPutObjectParser.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939377411978" remote="131343563400000000" Dst="0" />
+<file name="SXUploadPartParser.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939380314070" remote="131343563400000000" Dst="0" />
+</dwsync>

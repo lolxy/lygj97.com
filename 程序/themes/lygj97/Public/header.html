@@ -1,0 +1,30 @@
+{:hook('body_start')}
+<header>
+  <div class="containers ovh">
+    <div class="logo fl"> 
+    	<a href="{$site_host}"> 
+        	<img src="{:sp_get_image_url($site_logo,'!thumb400x150')}" alt="" class="img-responsive"/> 
+        </a> 
+    </div>
+    <div class="ewmbox fl"> 
+    	<img src="{:sp_get_image_url($site_erweima,'!thumbnail120x120')}" alt="" class="img-responsive"/> 
+    </div>
+    <div class="searchbox fr">
+      <div class="topnav hidden-xs"> 
+      <a href="javascript:void(0);" onclick="SetHome(this,'http://www.lygj97.com')"><span>设为首页</span></a> 
+      <a href="javascript:void(0);" onclick="AddFavorite('龙和古建',location.href)"><span>加入收藏</span></a> 
+      <a href="?l=en-us"><span>ENGLISH</span></a> 
+      <a href="{$gs_email}" class="last" target="_blank"><span>企业邮箱</span></a> 
+      </div>
+      <div class="clear"></div>
+      <div class="search hidden-xs">
+        <form method="post" class="form-inline" action="{:U('portal/search/index')}" target="_blank" autocomplete="off">
+          <div class="inputbox">
+            <input type="text" class="input-control" name="keyword" placeholder="请输入搜索关键字" value="{:I('get.keyword')}"/>
+          </div>
+          <input type="submit" class="btn-search" value="搜索">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>

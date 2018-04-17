@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="Command.php" server="hyu2652530001.my3w.com//htdocs/" local="131354937471173284" remote="131343563400000000" Dst="0" />
+<file name="HttpRequest.php" server="hyu2652530001.my3w.com//htdocs/" local="131354937472274065" remote="131343563400000000" Dst="0" />
+<file name="OpenServiceClient.php" server="hyu2652530001.my3w.com//htdocs/" local="131354937473274770" remote="131343563400000000" Dst="0" />
+<file name="RetryableServiceClient.php" server="hyu2652530001.my3w.com//htdocs/" local="131354937474375703" remote="131343563400000000" Dst="0" />
+<file name="ExecutionContext.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939339223934" remote="131343563400000000" Dst="0" />
+<file name="HttpMessage.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939339234067" remote="131343563400000000" Dst="0" />
+<file name="HttpResponse.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939340324719" remote="131343563400000000" Dst="0" />
+<file name="HttpServiceClient.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939340324719" remote="131343563400000000" Dst="0" />
+<file name="ResponseParserInterface.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939341335581" remote="131343563400000000" Dst="0" />
+<file name="ResponseHandlerInterface.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939341345562" remote="131343563400000000" Dst="0" />
+<file name="ServiceClientFactory.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939342366168" remote="131343563400000000" Dst="0" />
+<file name="ServiceClientInterface.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939342366168" remote="131343563400000000" Dst="0" />
+</dwsync>

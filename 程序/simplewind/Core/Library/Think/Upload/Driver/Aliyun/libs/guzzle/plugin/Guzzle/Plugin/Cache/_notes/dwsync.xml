@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="CacheKeyProviderInterface.php" server="hyu2652530001.my3w.com//htdocs/" local="131354937416072840" remote="131343562800000000" Dst="0" />
+<file name="CallbackCanCacheStrategy.php" server="hyu2652530001.my3w.com//htdocs/" local="131354937417143601" remote="131343562800000000" Dst="0" />
+<file name="DefaultCacheStorage.php" server="hyu2652530001.my3w.com//htdocs/" local="131354937418354453" remote="131343562800000000" Dst="0" />
+<file name="DenyRevalidation.php" server="hyu2652530001.my3w.com//htdocs/" local="131354937419465399" remote="131343562800000000" Dst="0" />
+<file name="CachePlugin.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939283604172" remote="131343562800000000" Dst="0" />
+<file name="CacheStorageInterface.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939284664891" remote="131343562800000000" Dst="0" />
+<file name="CanCacheStrategyInterface.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939284664891" remote="131343562800000000" Dst="0" />
+<file name="DefaultCacheKeyProvider.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939285725765" remote="131343562800000000" Dst="0" />
+<file name="DefaultCanCacheStrategy.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939285725765" remote="131343562800000000" Dst="0" />
+<file name="RevalidationInterface.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939286776534" remote="131343562800000000" Dst="0" />
+<file name="DefaultRevalidation.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939286826425" remote="131343562800000000" Dst="0" />
+<file name="SkipRevalidation.php" server="hyu2652530001.my3w.com//htdocs/" local="131354939287867161" remote="131343562800000000" Dst="0" />
+</dwsync>

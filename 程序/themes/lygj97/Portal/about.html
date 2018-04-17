@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>{$post_title}_{$site_name}</title>
+<meta name="keywords" content="{$site_seo_keywords}" />
+<meta name="description" content="{$site_seo_description}">
+<tc_include file="Public:head" />
+</head>
+
+<body>
+<tc_include file="Public:header" />
+<tc_include file="Public:nav" />
+<php>
+$slides=sp_getslide("about_ads");
+</php>
+<div class="bj_con">
+  <div class="content"> 
+    <!---- 公司介绍 ---->
+    <div class="about">
+      <if condition="!empty($slides)">
+      <div class="about_img">
+        <div class="img_nr">
+          <div class="img_nr_bor">
+            <div class="img_nr_bor1"> 
+            <foreach name="slides" item="vo">
+            	<img src="{:sp_get_asset_upload_path($vo['slide_pic'])}" alt="">
+            </foreach>
+            </div>
+          </div>
+        </div>
+        <div class="img_bj"> <b class="b_01"></b> <b class="b_02"></b> <b class="b_03"></b> <b class="b_04"></b> </div>
+      </div>
+      </if>
+      <div class="about_top"> 
+      <img src="__PUBLIC__/picture/into09.png">
+        <h1>关于我们</h1>
+        <p class="visible-md visible-lg">
+        <a href="{:leuu('portal/page/index',array('id'=>3))}">关于我们</a> > 
+        <span>
+        <if condition="$id == 1">企业文化
+        <elseif condition="$id == 2"/>组织机构
+        <elseif condition="$id == 5"/>加入我们
+        <else/>公司简介</if>
+        </span> 
+        </p>
+      </div>
+      <div class="about_mune">
+        <ul>
+        <if condition="$id != 5">
+          <if condition="$id == 1"><li class="bj">企业文化</li><else/>
+          <li><a href="{:leuu('portal/page/index',array('id'=>1))}">企业文化</a></li></if>
+          <li><a href="{:leuu('portal/page/index',array('id'=>7))}">荣誉资质</a></li>
+          <if condition="$id == 2"><li class="bj">组织机构</li><else/>
+          <li><a href="{:leuu('portal/page/index',array('id'=>2))}">组织机构</a></li></if>
+          <!--<li><a href="{:leuu('portal/list/index',array('id'=>3))}">企业历程</a></li>-->
+          <if condition="$id == 3"><li class="bj">公司简介</li><else/>
+          <li><a href="{:leuu('portal/page/index',array('id'=>3))}">公司简介</a></li></if>
+        </ul>
+        </if>
+      </div>
+      <div class="about_con">
+        <!--内容调用-->
+        {$post_content|htmlspecialchars_decode}
+        <!--//内容调用-->
+      </div>
+    </div>
+  </div>
+</div>
+<!---- 尾部 ----> 
+
+<tc_include file="Public:footer"/>
+<tc_include file="Public:scripts"/>
+{:hook('footer_end')}
+</body>
+</html>

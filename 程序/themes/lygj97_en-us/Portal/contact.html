@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>{$post_title_en}_{$site_name_en} </title>
+<meta name="keywords" content="{$site_seo_keywords_en}" />
+<meta name="description" content="{$site_seo_description_en}">
+<tc_include file="Public:head" />
+<style>
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.contact ul li{float: none;}
+</style>
+</head>
+
+<body>
+<tc_include file="Public:header" />
+<tc_include file="Public:nav" />
+<script src="http://api.map.baidu.com/api?v=1.3"></script>
+
+<php>
+$slides=sp_getslide("contact_ads");
+</php>
+<div class="bj_con">
+    <div class="content">
+        <!---- 公司介绍 ---->
+        <div class="about">
+            <if condition="!empty($slides)">
+              <div class="about_img">
+                <div class="img_nr">
+                  <div class="img_nr_bor">
+                    <div class="img_nr_bor1"> 
+                    <foreach name="slides" item="vo">
+                        <img src="{:sp_get_asset_upload_path($vo['slide_pic'])}" alt="">
+                    </foreach>
+                    </div>
+                  </div>
+                </div>
+                <div class="img_bj"> <b class="b_01"></b> <b class="b_02"></b> <b class="b_03"></b> <b class="b_04"></b> </div>
+              </div>
+              </if>
+            <div class="about_top">
+            	<img src="__PUBLIC__/picture/into12.png">
+            	<h1>Contact Cooperation</h1>
+            </div>
+            <div class="contact">
+            	<div class="row">
+					<div class="col-xs-12 hidden-xs" style="margin-top:0px; margin-bottom:20px;">
+						<div style="width:100%;height:254px;border:#ccc solid 1px;font-size:12px" id="map"></div>
+					</div>
+                	<div class="col-xs-12 col-md-6">
+                    	<h1>HELLO!</h1>
+                      	<p>Wecome to {$company_name_en}，If you have any good advice to me, please leave us a message or contact us by the following ways, we will reply to you as soon as possible, and to provide you with the most sincere service, thank you!</p>
+                        <ul>
+                        	<li><b><img src="__PUBLIC__/picture/into13.png"></b><span>{$tell}</span></li>
+                        	<li><b><img src="__PUBLIC__/picture/into14.png"></b><span>{$email}</span></li>
+                        	<li><b><img src="__PUBLIC__/picture/into14.png"></b><span>{$address_en}</span></li>
+                        </ul>
+                        <div class="contact_ewm visible-lg visible-md"><img src="{:sp_get_image_url($site_erweima,'!thumbnail120x120')}" alt="" class="img-responsive"/></div>
+                    </div>
+                	<div class="col-xs-12 col-md-6 mt-xs-20">
+						<form class="form-light js-ajax-form" role="form" method="post" action="{:U('api/guestbook/addmsg')}">
+							<h2>Your name</h2>
+                            <input type="text" class="contact_bd" placeholder="Please enter your name" name="full_name">
+							<h2>Contact Phone</h2>
+                            <input type="text" class="contact_bd" placeholder="Please enter your phone number" name="tell">
+                            <h2>E-mail</h2>
+                            <input type="email" class="contact_bd" placeholder="Please enter your email address" name="email">
+                            <h2>Content</h2>
+                            <textarea class="span6" id="message" placeholder="Please enter your message" style="height: 100px;" name="msg"></textarea>
+							<h2>Verification Code</h2>
+							<div class="contact_yzm">
+								<input type="text" placeholder="Please enter the verification code" name="verify" autocomplete="off">
+								{:sp_verifycode_img('length=4&font_size=16&width=150&height=34&use_noise=1&use_curve=0','style="cursor:pointer;vertical-align: top;" title="点击获取"')}
+							</div>
+                            <button type="submit" class="contact_anniu js-ajax-submit" data-wait="1500">Send message</button>
+						</form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!---- 尾部 ---->
+<tc_include file="Public:footer"/>
+<tc_include file="Public:scripts"/>
+<script type="text/javascript">
+//全局变量
+var GV = {
+    ROOT: "/",
+    WEB_ROOT: "/",
+    JS_ROOT: "public/js/"
+};
+</script>
+<script src="__PUBLIC__/js/wind.js"></script>
+<script src="__PUBLIC__/js/frontend.js"></script>
+<script type="text/javascript">
+    //创建和初始化地图函数：
+    function initMap(){
+      createMap();//创建地图
+      setMapEvent();//设置地图事件
+      addMapControl();//向地图添加控件
+      addMapOverlay();//向地图添加覆盖物
+    }
+    function createMap(){ 
+      map = new BMap.Map("map"); 
+      map.centerAndZoom(new BMap.Point({$jingdu},{$weidu}),17);
+    }
+    function setMapEvent(){
+      map.enableScrollWheelZoom();
+      map.enableKeyboard();
+      map.enableDragging();
+      map.enableDoubleClickZoom()
+    }
+    function addClickHandler(target,window){
+      target.addEventListener("click",function(){
+        target.openInfoWindow(window);
+      });
+    }
+    function addMapOverlay(){
+      var markers = [
+        {content:"My remarks",title:"{$company_name_en}",imageOffset: {width:0,height:3},position:{lat:{$weidu},lng:{$jingdu}}}
+      ];
+      for(var index = 0; index < markers.length; index++ ){
+        var point = new BMap.Point(markers[index].position.lng,markers[index].position.lat);
+        var marker = new BMap.Marker(point,{icon:new BMap.Icon("http://api.map.baidu.com/lbsapi/createmap/images/icon.png",new BMap.Size(20,25),{
+          imageOffset: new BMap.Size(markers[index].imageOffset.width,markers[index].imageOffset.height)
+        })});
+        var label = new BMap.Label(markers[index].title,{offset: new BMap.Size(25,5)});
+        var opts = {
+          width: 200,
+          title: markers[index].title,
+          enableMessage: false
+        };
+        var infoWindow = new BMap.InfoWindow(markers[index].content,opts);
+        marker.setLabel(label);
+        addClickHandler(marker,infoWindow);
+        map.addOverlay(marker);
+      };
+    }
+    //向地图添加控件
+    function addMapControl(){
+      var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+      scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+      map.addControl(scaleControl);
+      var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+      map.addControl(navControl);
+      var overviewControl = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:true});
+      map.addControl(overviewControl);
+    }
+    var map;
+      initMap();
+  </script>
+  {:hook('footer_end')}
+</body>
+</html>

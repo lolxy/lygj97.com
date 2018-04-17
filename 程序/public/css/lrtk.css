@@ -1,0 +1,16 @@
+﻿.gg_full {
+	POSITION: relative; MARGIN: 0px auto; WIDTH:100%;background:#a60b07; z-index:10000; text-align:center;
+}
+.gg_full .gg_fbtn {
+	POSITION: absolute; WIDTH: 19px; DISPLAY: none; HEIGHT: 55px; TOP: 15px; right: 5px
+}
+.gg_full .gg_fbtn A {
+	DISPLAY: block; BACKGROUND: url(../images/gg_btn.png) no-repeat 0px 0px; HEIGHT: 55px; OVERFLOW: hidden
+}
+.gg_full .gg_fbtn .gg_fclose {
+	BACKGROUND: url(../images/gg_btn.png) no-repeat -19px 0px
+}
+.gg_full .gg_fcon {
+	DISPLAY: none;
+}
+.gg_fcon img{ max-width:950px; width:100%;}

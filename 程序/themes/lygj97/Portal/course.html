@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>{$term.name}_{$site_name} </title>
+<meta name="keywords" content="{$site_seo_keywords}" />
+<meta name="description" content="{$site_seo_description}">
+<tc_include file="Public:head" />
+</head>
+
+<body>
+<tc_include file="Public:header" />
+<tc_include file="Public:nav" />
+<!-- 时间轴css样式 -->
+<link href="__PUBLIC__/css/history.css" rel="stylesheet" />
+<php>
+$slides=sp_getslide("process_ads");
+</php>
+<div class="bj_con">
+    <div class="content">
+        <!---- 动态资讯 ---->
+        <div class="about">
+            <if condition="!empty($slides)">
+              <div class="about_img">
+                <div class="img_nr">
+                  <div class="img_nr_bor">
+                    <div class="img_nr_bor1"> 
+                    <foreach name="slides" item="vo">
+                        <img src="{:sp_get_asset_upload_path($vo['slide_pic'])}" alt="">
+                    </foreach>
+                    </div>
+                  </div>
+                </div>
+                <div class="img_bj"> <b class="b_01"></b> <b class="b_02"></b> <b class="b_03"></b> <b class="b_04"></b> </div>
+              </div>
+              </if>
+            <div class="about_top">
+                <img src="__PUBLIC__/picture/into10.png">
+                <h1>{$term.name}</h1>
+                <php>
+                $breadcrumb=sp_get_breadcrumb($term['term_id']);
+                </php> 
+                <p class="visible-md visible-lg">
+                <a href="{:leuu('portal/page/index',array('id'=>3))}">关于我们</a>
+                <foreach name="breadcrumb" item="vo">
+                <a href="{:leuu('portal/list/index',array('id'=>$vo['term_id']))}">> {$vo.name}</a>
+                </foreach>
+                <span>> {$term.name}</span>
+                </p>
+            </div>
+            <div class="about_mune">
+               <ul>
+                  <li><a href="{:leuu('portal/page/index',array('id'=>1))}">企业文化</a></li>
+                  <li><a href="{:leuu('portal/page/index',array('id'=>7))}">荣誉资质</a></li>
+                  <li><a href="{:leuu('portal/page/index',array('id'=>2))}">组织机构</a></li>
+                  <li class="bj">企业历程</li>
+                  <li><a href="{:leuu('portal/page/index',array('id'=>3))}">公司简介</a></li>
+                </ul>
+            </div>
+
+            <!-- 时间轴代码 开始 -->
+            <div class="head-warp">
+                <div class="head">
+                    <div class="nav-box">
+                        <ul>
+                            <li class="cur" style="text-align:center;">&nbsp;</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="main">
+                <div class="history">
+                	<php>
+                    $time = date('Y');
+                    </php>
+                    <for start='$time' comparison='gt' step="-1" end="1996">
+                    <php> 
+                    $j=$i+1;
+                    $where['post_date'] = array(array('elt',$j.'-01-01 00:00:00'),array('gt',$i.'-01-01 00:00:00'),'and');
+                    $list = sp_sql_posts("cid:3;field:smeta,post_title,post_content,post_date;order:post_date DESC;",$where); 
+                    </php>
+                    <if condition="!empty($list)">
+                    <div class="history-date">
+                        <ul>
+                            <h2 class="first">
+                                <a href="#nogo">{$i}年</a>
+                                <b id="circle"></b>
+                            </h2>
+                             <foreach name="list" item="vo">
+                              <li class="green">
+                                <div class="point"><b></b></div>
+                                <h3>{:date('m.d',strtotime($vo['post_date']))}<span>{$i}</span></h3>
+                                <dl>
+                                    <dt>
+                                    <div class="qylc_news">
+                                    	<php>$smeta=json_decode($vo['smeta'],true);</php>
+                                    	<if condition="!empty($smeta['thumb'])">
+                                            <div class="qylc_left view">
+                                                <a target="_blank" href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">
+                                                    <img src="{:sp_get_image_url($smeta['thumb'],'!thumb168x120')}"/>
+                                                </a>
+                                            </div>
+                                    	</if>
+                                        <div class="qylc_right">
+                                            <a target="_blank" href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">{$vo.post_title}</a>
+                                            <p>{$vo.post_content}</p>
+                                        </div>
+                                    </div>
+                                    </dt>
+                                </dl>
+                            </li>
+                            </foreach>     
+                         </ul>
+                    </div>
+                    </if>
+                    </for>               
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!---- 尾部 ---->
+
+<tc_include file="Public:footer"/>
+<tc_include file="Public:scripts"/>
+<script src="__PUBLIC__/js/main.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".haha").on('click',function () {
+            alert(0);
+            //window.location.href = $(this).attr("data-url");
+            Window.open($(this).attr("data-url"));
+        });
+    });
+</script>
+{:hook('footer_end')}
+</body>
+</html>

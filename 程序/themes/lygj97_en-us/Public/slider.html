@@ -1,0 +1,26 @@
+<!--轮播图-->
+<php>
+$home_slides=sp_getslide("slider");
+$home_slides=empty($home_slides)?$default_home_slides:$home_slides;
+</php>
+<div id="slideBox" class="slideBox">
+    <div class="hd">
+        <ul>
+        <foreach name="home_slides" item="vo">
+        <li>{$key}</li>
+        </foreach>
+        </ul>
+    </div>
+    <div class="bd">
+        <ul>
+            <foreach name="home_slides" item="vo">
+            <li><a href="{$vo.slide_url}" target="_blank"><img src="{:sp_get_asset_upload_path($vo['slide_pic'])}" alt="" class="img-responsive"></a></li>
+            </foreach>
+        </ul>
+    </div>
+
+    <!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+    <a class="prev" href="javascript:void(0)"></a>
+    <a class="next" href="javascript:void(0)"></a>
+</div>
+<!--//轮播图-->

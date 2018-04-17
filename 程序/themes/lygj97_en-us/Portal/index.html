@@ -1,0 +1,382 @@
+<!doctype html>
+<html>
+<head>
+<title>{$site_seo_title_en}_{$site_name_en}</title>
+<meta name="keywords" content="{$site_seo_keywords}" />
+<meta name="description" content="{$site_seo_description}">
+<tc_include file="Public:head" />
+<style>
+.jianjiebox h2{width: 200px;height: 30px;}
+.jianjiebox p{margin-top: 50px;margin-left: 40px;margin-right: 30px;}
+</style>
+</head>
+
+<body>
+<tc_include file="Public:header" />
+<tc_include file="Public:slider" />
+<tc_include file="Public:nav" />
+
+<div class="containers mt45">
+	<div class="rows">
+        <div class="leftbox">
+            <div class="jianjiebox">
+            	<h2>Company Profile</h2>
+                <p>
+                	<php>$page=sp_sql_page(3);</php>
+                    {$page['post_content_en']|htmlspecialchars_decode|strip_tags|msubstr=0,280,'utf-8',false}<a href="{:leuu('page/index',array('id'=>$page[id]))}" target="_blank">... [View]</a>
+                </p>
+            </div>
+        </div>
+        <div class="rightbox">
+        	<div class="box">
+            	<php>
+                $qydt=sp_sql_posts("cid:6;field:post_title_en,post_excerpt_en,object_id,smeta,term_id;order:istop desc,listorder asc,recommended desc,post_modified desc,post_date desc;limit:6;"); 
+                </php>
+            	<h2 class="htit hsmall">
+                	Enterprise Dynamic<a href="{:leuu('list/index',array('id'=>6))}" target="_blank" class="more">MORE</a>
+                </h2>
+                <ul class="list">
+                	<foreach name="qydt" item="vos" key="k">
+                    <li>
+                    	<a href="{:leuu('article/index',array('id'=>$vos['object_id'],'cid'=>$vos['term_id']))}" target="_blank">{$vos.post_title_en}</a>
+                    </li>
+                    </foreach>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="rows">
+    	<div class="leftbox">
+            <div class="leftsubbox">
+            	<div class="box">
+                <php>
+                $hyzx=sp_sql_posts("cid:7;field:post_title_en,post_date,post_excerpt_en,object_id,smeta,term_id;order:istop desc,recommended desc,post_modified desc,post_date desc;limit:6;"); 
+                </php>
+                    <h2 class="htit">
+                        Industry<a href="{:leuu('list/index',array('id'=>7))}" target="_blank" class="more">MORE</a>
+                    </h2>
+                    <ul class="lists">
+                    	<foreach name="hyzx" item="vo" key="k">
+                        <li>
+                            <a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" target="_blank">
+                                <span class="title">{$vo.post_title_en}</span>
+                                <span class="time">{:date('Y-m-d',strtotime($vo['post_date']))}</span>
+                             </a>
+                        </li>
+                        </foreach>
+                    </ul>
+            	</div>
+            </div>
+            <div class="leftsubbox">
+            	<div class="box">
+                    <php>  
+                    $ids=8;
+                     $cterms=sp_get_child_terms($ids);
+                     $termids=null; 
+                    foreach($cterms as $cvo){
+                        $ctermid = sp_get_child_terms($cvo['term_id']);
+                        $termids[]=$cvo['term_id'];
+                        foreach($ctermid as $cvos){
+                            $termids[]=$cvos['term_id'];	
+                        }
+                    }
+                    $termsid = empty($termids)?$ids:$ids.','.implode(',',$termids);                      	
+                    $yzgy=sp_sql_posts("cid:$termsid;field:post_title_en,post_date,post_excerpt_en,object_id,smeta,term_id;order:istop desc,recommended desc,post_modified desc,post_date desc;limit:3;"); 
+                </php>
+                    <h2 class="htit">
+                        Construction<a href="{:leuu('list/index',array('id'=>8))}" target="_blank" class="more">MORE</a>
+                    </h2>
+                    <ul class="lists list2">
+                        <foreach name="yzgy" item="vo" key="k">
+                        <php>$smeta=json_decode($vo['smeta'],true);</php>
+                        <?php
+                      if($k==0){
+                      ?>
+                        <li class="mainlist">
+                            <a href="{:leuu('portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" target="_blank">
+                                <span class="pic">
+                                    <if condition="!empty($smeta['thumb'])">
+                                    	<img src="{:sp_get_image_url($smeta['thumb'],'!thumb200x200')}" alt="" class="img-responsive"/>
+                                    <else/>
+                                    	<img src="__PUBLIC__/images/noimg.png" alt="" class="img-responsive"/>
+                                    </if>
+                                </span>
+                                <span class="text">{$vo.post_excerpt_en|mb_substr=0,84,'utf-8'}...</span>
+                             </a>
+                        </li>
+                        <?php
+                        }else{
+                        ?>
+                        <li>
+                            <a href="{:leuu('portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" target="_blank">
+                                <span class="title">{$vo.post_title_en}</span>
+                                <span class="time">{:date('Y-m-d',strtotime($vo['post_date']))}</span>
+                             </a>
+                        </li>
+                        <?php
+                        }
+                        ?>
+                        </foreach>
+                    </ul>
+            	</div>
+            </div>
+        </div>
+        <div class="rightbox">
+        	<div class="slideTxtBox gongchengphoto">
+                <div class="hd">
+                <!--推荐前5个-->
+                    <ul><li class="on">Project Album</li><li>Video</li></ul>
+                </div>
+                <div class="bd">
+                    <div>
+                    	<php>
+                        $map['recommended'] = 1;
+                        $cid=14;
+                        $tag="field:post_date,object_id,smeta,term_id;order:listorder desc,post_modified desc;limit:5";
+                        $mlist=sp_sql_posts_bycatid($cid,$tag,$map);
+                        </php>
+                        <div id="displayBox" class="displayBox">
+                            <div class="bd">
+                                <ul>
+                                    <foreach name="mlist" item="vo" key="k">
+                                        <php>$smeta=json_decode($vo['smeta'],true);</php>
+                                        <if condition="!empty($smeta['thumb'])"> 
+                                    <li><a href="{:leuu('portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" target="_blank"><img src="{:sp_get_image_url($smeta['thumb'],'!thumb278x205')}" alt="" class="img-responsive"/></a></li>
+                                    </if>
+                                    </foreach>
+                                </ul>
+                            </div>
+						</div>
+			
+                    </div>
+                    <div style="display: none;">
+						<embed src="https://imgcache.qq.com/tencentvideo_v1/playerv3/TPout.swf?max_age=86400&v=20161117&vid=u0389xgwm6r&auto=0" allowFullScreen="true" quality="high" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash" class="embedstyle"></embed>
+                        <!--<video src="http://player.youku.com/player.php/sid/XMjUyMDEwMDYyMA==/v.swf" controls="controls" class="embedstyle">
+                        	your browser does not support the video tag
+                        </video>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rows">
+    	<div class="slideTxtBox gongchengtabs">
+            <div class="hd">
+                <ul><li class="on">Overseas</li><li>Domestic</li><li>Engineering</li></ul>
+            </div>
+            <!--按更新时间排序-->
+<php>                    
+$gwgc=sp_sql_posts("cid:16;field:post_title_en,post_date,post_excerpt_en,object_id,smeta,term_id;order:post_modified desc,post_date desc;limit:15;"); 
+$gngc=sp_sql_posts("cid:15;field:post_title_en,post_date,post_excerpt_en,object_id,smeta,term_id;order:post_modified desc,post_date desc;limit:15;"); 
+$zsgc=sp_sql_posts("cid:17;field:post_title_en,post_date,post_excerpt_en,object_id,smeta,term_id;order:post_modified desc,post_date desc;limit:15;"); 
+</php>
+            <div class="bd">
+                <div class="ovh">
+                    <div class="imgbox">
+                    	<foreach name="gwgc" item="vo" key="k">
+                        <if condition="$k==0">
+                    	<a href="{:leuu('portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" target="_blank">
+                            <php>$smeta=json_decode($vo['smeta'],true);</php>
+                            <if condition="!empty($smeta['thumb'])">
+                                <img src="{:sp_get_image_url($smeta['thumb'],'!thumb370x247')}" alt="" class="img-responsive"/>
+                            <else/>
+                                <img src="__PUBLIC__/images/noimg.png" alt="" class="img-responsive"/>
+                            </if>
+                        </a>
+                         </if>
+                         </foreach>
+                    </div>
+                    <div class="tablist">
+                    	<div class="listbox">
+                            <foreach name="gwgc" item="vo" key="k">
+                            <?php
+                            $k=$k+1;
+                      if($k==1 || $k%8==0){
+                      ?>
+                            <ul class="list">
+                               <?php
+                      }
+                      ?> 
+                                    <li>
+                                        <a href="{:leuu('portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" target="_blank">{$vo.post_title_en}</a>
+                                    </li>
+                                
+                            <?php
+                      if($k>0 && $k%7==0){
+                      ?>
+                            </ul>
+                               <?php
+                      }
+                      ?> 
+                            </foreach>
+                        </div>
+                        <div class="morebox">
+                        	<a href="{:leuu('list/index',array('id'=>15))}" target="_blank" class="more">MORE</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: none;" class="ovh">
+                    <div class="imgbox">
+                    	<foreach name="gngc" item="vo" key="k">
+                        <if condition="$k==0">
+                    	<a href="{:leuu('portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" target="_blank">
+                            <php>$smeta=json_decode($vo['smeta'],true);</php>
+                            <if condition="!empty($smeta['thumb'])">
+                                <img src="{:sp_get_image_url($smeta['thumb'],'!thumb370x247')}" alt="" class="img-responsive"/>
+                            <else/>
+                                <img src="__PUBLIC__/images/noimg.png" alt="" class="img-responsive"/>
+                            </if>
+                        </a>
+                         </if>
+                         </foreach>
+                    </div>
+                    <div class="tablist">
+                    	<div class="listbox">
+                            <foreach name="gngc" item="vo" key="k">
+                            <?php
+                            $k=$k+1;
+                      if($k==1 || $k%8==0){
+                      ?>
+                            <ul class="list">
+                               <?php
+                      }
+                      ?> 
+                                    <li>
+                                        <a href="{:leuu('portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" target="_blank">{$vo.post_title_en}</a>
+                                    </li>
+                                
+                            <?php
+                     if($k>0 && $k%7==0){
+                      ?>
+                            </ul>
+                               <?php
+                      }
+                      ?> 
+                            </foreach>
+                        </div>
+                        <div class="morebox">
+                        	<a href="{:leuu('list/index',array('id'=>16))}" target="_blank" class="more">MORE</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: none;" class="ovh">
+                    <div class="imgbox">
+                    	<foreach name="zsgc" item="vo" key="k">
+                        <if condition="$k==0">
+                    	<a href="{:leuu('portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" target="_blank">
+                            <php>$smeta=json_decode($vo['smeta'],true);</php>
+                            <if condition="!empty($smeta['thumb'])">
+                                <img src="{:sp_get_image_url($smeta['thumb'],'!thumb370x247')}" alt="" class="img-responsive"/>
+                            <else/>
+                                <img src="__PUBLIC__/images/noimg.png" alt="" class="img-responsive"/>
+                            </if>
+                        </a>
+                         </if>
+                         </foreach>
+                    </div>
+                    <div class="tablist">
+                    	<div class="listbox">
+                            <foreach name="zsgc" item="vo" key="k">
+                            <?php
+                            $k=$k+1;
+                     if($k==1 || $k%8==0){
+                      ?>
+                            <ul class="list">
+                               <?php
+                      }
+                      ?> 
+                                    <li>
+                                        <a href="{:leuu('portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" target="_blank">{$vo.post_title_en}</a>
+                                    </li>
+                                
+                            <?php
+                      if($k>0 && $k%7==0){
+                      ?>
+                            </ul>
+                               <?php
+                      }
+                      ?> 
+                            </foreach>
+                        </div>
+                        <div class="morebox">
+                        	<a href="{:leuu('list/index',array('id'=>17))}" target="_blank" class="more">MORE</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--推荐或置顶-->
+    <div class="rows">
+    	<div class="slidescroll">
+        	<h2><img src="__PUBLIC__/images/gczs_en.png" alt="Engineering demonstration"" class="img-responsive"/></h2>
+            <div class="picScroll-left">
+                <div class="hd">
+                    <a class="next"></a>
+                    <a class="prev"></a>
+                </div>
+                <div class="bd">
+                    <ul>
+                        <php>
+                        $where['recommended|istop'] = 1;
+                        $cid=14;
+                        $tag="field:post_title_en,post_date,post_excerpt_en,object_id,smeta,term_id;order:listorder desc,post_date desc;limit:20";
+                        $gczslist=sp_sql_posts_bycatid($cid,$tag,$where);
+                        </php>
+                        <foreach name="gczslist" item="vo" key="k">
+                        <php>$smeta=json_decode($vo['smeta'],true);</php>
+                        <if condition="!empty($smeta['thumb'])"> 
+                        <li>
+                            <a href="{:leuu('portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" target="_blank">
+                            <div class="pic">
+                                <img src="{:sp_get_image_url($smeta['thumb'],'!thumb200x200')}" alt="{$vo.post_title_en}" class="img-responsive"/>
+                            </div>
+                            <div class="txt">{$vo.post_title_en|mb_substr=0,8,'utf-8'}</div>
+                            </a>
+                        </li>
+                        </if>
+                        </foreach>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rows">
+    	<div class="linkbox">
+        	<h2>
+            	<img src="__PUBLIC__/images/link_en.png" alt="Friendship link" class="img-responsive"/>
+            </h2>
+            <div class="linklist">
+            	<php>
+    $links=sp_getlinks();
+</php>
+                <ul>
+                	<foreach name="links" item="vo">
+                    <li>
+                    	<notempty name="vo.link_image">
+                        <a href="{$vo.link_url}" target="{$vo.link_target}" title="{$vo.link_name}">
+                        	<img src="{:sp_get_image_url($vo['link_image'],'!thumb175x70')}" alt="{$vo.link_name}" class="img-responsive"/>
+                        </a>
+                        </notempty>
+                    </li>
+                    </foreach>
+                </ul>
+            </div>
+            <!--<div class="morebox">
+            	<a href="#" class="more">MORE</a>
+            </div>-->
+        </div>
+    </div>
+</div>
+<tc_include file="Public:footer"/>
+<tc_include file="Public:scripts"/>
+<script src="__PUBLIC__/js/jquery.SuperSlide.js"></script>
+<script>
+jQuery(".slideBox").slide({mainCell:".bd ul",effect:"leftLoop",autoPlay:true,trigger:"click"});
+jQuery(".displayBox").slide({mainCell:".bd ul",autoPlay:true});	
+jQuery(".slideTxtBox").slide({trigger:"click"});
+jQuery(".picScroll-left").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"leftLoop",autoPlay:true,vis:5,trigger:"click"});
+</script>
+{:hook('footer_end')}
+</body>
+</html>

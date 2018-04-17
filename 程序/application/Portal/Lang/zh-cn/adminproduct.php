@@ -1,0 +1,28 @@
+<?php
+return array(
+    "TITLE" => '标题',
+    "CATEGORY" => '分类',
+    "HITS" => '点击量',
+    "KEYWORDS" => '关键字',
+    "COMMENT_COUNT" => '评论量',
+    "SOURCE" => '来源',
+    "ABSTRACT" => '摘要',
+    "THUMBNAIL" => "缩略图",
+    "AUTHOR" => '作者',
+    "PUBLISH_DATE" => '发布时间',
+	'PORTAL_ADMINPRODUCT_ADD_POST' => '提交添加',
+  'PORTAL_ADMINPRODUCT_COPY' => '工程批量复制',
+  'PORTAL_ADMINPRODUCT_EDIT_POST' => '提交编辑',
+  'PORTAL_ADMINPRODUCT_LISTORDERS' => '工程排序',
+  'PORTAL_ADMINPRODUCT_RECOMMEND' => '工程推荐',
+  'PORTAL_ADMINPRODUCT_RECYCLEBIN' => '工程回收',
+  'PORTAL_ADMINPRODUCT_TOP' => '工程置顶',
+  'PORTAL_ADMINPRODUCT_ADD' => '添加工程',
+  'PORTAL_ADMINPRODUCT_INDEX' => '工程管理',
+  'PORTAL_ADMINPRODUCT_CHECK' => '工程审核',
+  'PORTAL_ADMINPRODUCT_CLEAN' => '彻底删除',
+  'PORTAL_ADMINPRODUCT_DELETE' => '删除工程',
+  'PORTAL_ADMINPRODUCT_EDIT' => '编辑工程',
+  'PORTAL_ADMINPRODUCT_MOVE' => '批量移动',
+  'PORTAL_ADMINPRODUCT_RESTORE' => '工程还原'
+);

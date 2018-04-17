@@ -1,0 +1,65 @@
+<!--导航栏-->
+<nav class="navbar hidden-xs">
+	<div class="containers">
+    	<div class="leftnav fl">
+        	<?php
+                $effected_id="";
+                $filetpl="<a href='\$href' target='\$target'>\$label</a>";
+                $foldertpl="<a href='\$href' target='\$target' class='dropdown-toggle' data-toggle='dropdown'>\$label <span class='caret'></span></a>";
+                $ul_class="dropdown-menu" ;
+                $li_class="" ;
+                $style="";
+                $showlevel=2;
+                $dropdown='dropdown';
+                echo sp_get_menu("main",$effected_id,$filetpl,$foldertpl,$ul_class,$li_class,$style,$showlevel,$dropdown);
+            ?>
+        </div>
+        <div class="rightnav fr">
+        	<?php
+                $effected_id="";
+                $filetpl="<a href='\$href' target='\$target'>\$label</a>";
+                $foldertpl="<a href='\$href' target='\$target' class='dropdown-toggle' data-toggle='dropdown'>\$label <span class='caret'></span></a>";
+                $ul_class="dropdown-menu" ;
+                $li_class="" ;
+                $style="";
+                $showlevel=2;
+                $dropdown='dropdown';
+                echo sp_get_menu("2",$effected_id,$filetpl,$foldertpl,$ul_class,$li_class,$style,$showlevel,$dropdown);
+            ?>
+        </div>
+        <div class="clear"></div>
+    </div>
+</nav>
+
+<div class="mune1 dropdown visible-xs">
+	<div class="search">
+        <form action="" method="post" target="_blank" autocomplete="off">
+          <div class="inputbox">
+            <input type="text" class="input-control" name="keyword"/>
+          </div>
+          <input type="submit" class="btn-search" value="搜索">
+        </form>
+    </div>
+    <button class="" data-toggle="dropdown">
+        <h1>菜单</h1>
+        <span class="glyphicon glyphicon-align-justify"></span>
+    </button>
+    <button class="togglelan" data-toggle="dropdown" data-target=".dropdown-lang">
+    <span class="glyphicon glyphicon-globe"></span>
+    </button>
+    <?php
+        $effected_id="";
+        $filetpl="<a href='\$href' target='\$target'>\$label</a>";
+        $foldertpl="<a href='\$href' target='\$target' class='dropdown-toggle' data-toggle='dropdown'>\$label <span class='caret'></span></a>";
+        $ul_class="" ;
+        $li_class="mune_dt" ;
+        $style="dropdown-menu";
+        $showlevel=1;
+        $dropdown='dropdown';
+        echo sp_get_menu("3",$effected_id,$filetpl,$foldertpl,$ul_class,$li_class,$style,$showlevel,$dropdown);
+    ?>
+    <ul class="dropdown-lang">
+    	<li><a href="?l=zh-cn">中文版</a></li>
+    	<li><a href="?l=en-us">English</a></li>
+    </ul>
+</div>
